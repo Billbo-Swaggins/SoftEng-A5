@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.awt.*;
+
 /**
  * Cipher application controller; don't modify this file (except for note below)
  */
@@ -27,11 +29,26 @@ public class CipherController {
 		cleartext = new Message();
 		caesarCipher = new CaesarCipher();
 		elbonianCipher = new ElbonianCipher();
+		cleartext.register(caesarCipher);
+		cleartext.register(elbonianCipher);
+
 
 		/*
 		 * You may add additional code here if it relates to your observer pattern implementation.
 		 */
 
+	}
+
+	public void initialize() {
+		textInputBox.textProperty().addListener((observable, oldValue, newValue) -> {
+			if(newValue.length() <= 140) {
+				onTextUpdate();
+				updateOutput();
+			}
+			else {
+
+			}
+		});
 	}
 
 	/**
@@ -42,6 +59,7 @@ public class CipherController {
 	@FXML
 	public void onTextUpdate(){
 		cleartext.setText(textInputBox.getText());
+		cleartext.notifyObservers();
 	}
 
 	/**
