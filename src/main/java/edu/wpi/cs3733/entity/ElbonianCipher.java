@@ -4,10 +4,10 @@ package edu.wpi.cs3733.entity;
  * Elbonian cipher; you must implement the cipher and the observer pattern
  */
 public class ElbonianCipher implements Observer {
-	private String input;
+	private String input = "";
 
 	public void setText(String text){
-
+		this.input = text;
 	}
 
 	public String getText(){
@@ -22,7 +22,7 @@ public class ElbonianCipher implements Observer {
 		int i = 0;
 
 		for(char c : toConvert.toUpperCase().toCharArray()) {
-			if (i <= 140) {
+			if (i < 140) {
 				if (c >= 65 && c <= 90) {
 					int charVal = c - 64;
 					toReturn = toReturn + String.format("%02d", charVal);
@@ -40,9 +40,6 @@ public class ElbonianCipher implements Observer {
 					toReturn = toReturn + c;
 
 				}
-			}
-			else {
-				toReturn = toReturn + c;
 			}
 			i++;
 		}

@@ -11,7 +11,6 @@ import java.awt.*;
  * Cipher application controller; don't modify this file (except for note below)
  */
 public class CipherController {
-
 	@FXML
 	TextField textInputBox;
 
@@ -57,5 +56,21 @@ public class CipherController {
 	public void updateOutput(){
 		caesarTextOut.setText(caesarCipher.getText());
 		elbonianTextOut.setText(elbonianCipher.getText());
+	}
+
+	public TextField getTextInputBox() {
+		return textInputBox;
+	}
+
+	public void setTextInputBox(TextField textInputBox) {
+		this.textInputBox = textInputBox;
+	}
+
+	public CaesarCipher getCaesarCipher() {
+		return caesarCipher;
+	}
+
+	public ElbonianCipher getElbonianCipher() {
+		return elbonianCipher;
 	}
 }
