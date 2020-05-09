@@ -11,7 +11,12 @@ public class CaesarCipher implements Observer {
 	}
 
 	public String getText(){
-		return convert(input);
+		if(valid(input)) {
+			return convert(input);
+		}
+		else {
+			return "";
+		}
 	}
 
 	private String convert(String toConvert) {
@@ -28,6 +33,19 @@ public class CaesarCipher implements Observer {
 			toReturn = toReturn + c;
 		}
 		return toReturn;
+	}
+
+	private boolean valid(String toConvert) {
+		if(toConvert.length() > 140) {
+			return false;
+		}
+
+		for(char c : toConvert.toCharArray()) {
+			if (c != 33 && c != 63 && c != 44 && c != 46 && c != 32 && !(c >= 65 && c <= 90) && !(c >= 97 && c <= 122)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override

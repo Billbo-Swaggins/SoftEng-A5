@@ -39,18 +39,6 @@ public class CipherController {
 
 	}
 
-	public void initialize() {
-		textInputBox.textProperty().addListener((observable, oldValue, newValue) -> {
-			if(newValue.length() <= 140) {
-				onTextUpdate();
-				updateOutput();
-			}
-			else {
-
-			}
-		});
-	}
-
 	/**
 	 * Runs once every time the text in the input box changes. Your observer pattern implementation should allow
 	 * for the text contained inside the different cipher objects to change despite that their setText() functions are
@@ -59,7 +47,7 @@ public class CipherController {
 	@FXML
 	public void onTextUpdate(){
 		cleartext.setText(textInputBox.getText());
-		cleartext.notifyObservers();
+		updateOutput();
 	}
 
 	/**

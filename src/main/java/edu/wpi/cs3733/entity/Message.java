@@ -12,6 +12,7 @@ public class Message implements Observable {
 
 	public void setText(String text){
 		this.text = text;
+		notifyObservers();
 	}
 
 	public String getText(){
